@@ -1,0 +1,21 @@
+version: '3'
+
+volumes:
+  maridb_data:
+      driver: local
+
+services:
+
+  db:
+    image: mariadb
+    container_name: db_sv
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: sunview!
+      MARIADB_DATABASE: sunview_db
+      MARIADB_USER: sunview
+      MARIADB_PASSWORD: sunview
+    ports:
+      - "3306:3306"
+    volumes:
+      - maridb_data:/var/lib/mariadb
